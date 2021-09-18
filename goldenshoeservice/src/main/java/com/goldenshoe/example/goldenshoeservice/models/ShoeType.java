@@ -17,9 +17,13 @@ public class ShoeType {
     @Column(name = "category")
     private String category;
 
+    @JsonIgnoreProperties("shoeType")
+    @OneToMany(mappedBy = "shoeType")
+    private List<ShoeModel> shoeModels;
 
     public ShoeType(String category) {
         this.category = category;
+        this.shoeModels = new ArrayList<>();
     }
 
     public ShoeType() {
@@ -39,5 +43,13 @@ public class ShoeType {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public List<ShoeModel> getShoeModels() {
+        return shoeModels;
+    }
+
+    public void setShoeModels(List<ShoeModel> shoeModels) {
+        this.shoeModels = shoeModels;
     }
 }

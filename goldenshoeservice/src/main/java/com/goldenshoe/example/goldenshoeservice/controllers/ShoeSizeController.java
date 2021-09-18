@@ -12,9 +12,8 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value = "/shoesizes")
+@RequestMapping(value = "/shoeSizes")
 public class ShoeSizeController {
-
     @Autowired
     ShoeSizeRepository shoeSizeRepository;
 

@@ -32,7 +32,7 @@ public class DataLoader implements ApplicationRunner {
         ShoeType chelsea = new ShoeType("chelsea");
         shoeTypeRepository.save(chelsea);
 
-        ShoeModel vintage = new ShoeModel("vintage", "brown", "190", "male", "hello world");
+        ShoeModel vintage = new ShoeModel("vintage", "brown", "190", "male", "hello world", chelsea);
         shoeModelRepository.save(vintage);
 
         ShoeSize small = new ShoeSize("8.5", 4);

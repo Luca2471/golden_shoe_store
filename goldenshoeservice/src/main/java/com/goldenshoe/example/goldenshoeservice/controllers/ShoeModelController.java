@@ -12,7 +12,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value = "/shoemodels")
+@RequestMapping(value = "/shoeModels")
 public class ShoeModelController {
     @Autowired
     ShoeModelRepository shoeModelRepository;
