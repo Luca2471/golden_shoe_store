@@ -23,27 +23,40 @@ public class ShoeModel {
     @Column(name = "price")
     private String price;
 
-    @Column(name = "gender")
-    private String gender;
+    @Column(name = "quantity")
+    private int quantity;
 
     @Column(name = "shoeURL")
     private String shoeURL;
+
 
     @JsonIgnoreProperties("shoeModel")
     @ManyToOne
     @JoinColumn(name = "shoeType_id", nullable = false)
     private ShoeType shoeType;
 
-    public ShoeModel(String model, String color, String price, String gender, String shoeURL, ShoeType shoeType) {
+    @Column(name = "gender")
+    private String gender;
+
+    public ShoeModel(String model, String color, String price, int quantity, String shoeURL, ShoeType shoeType, String gender) {
         this.model = model;
         this.color = color;
         this.price = price;
-        this.gender = gender;
+        this.quantity = quantity;
         this.shoeURL = shoeURL;
         this.shoeType = shoeType;
+        this.gender = gender;
     }
 
     public ShoeModel() {
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public Long getId() {
@@ -78,14 +91,6 @@ public class ShoeModel {
         this.price = price;
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
     public String getShoeURL() {
         return shoeURL;
     }
@@ -100,5 +105,13 @@ public class ShoeModel {
 
     public void setShoeType(ShoeType shoeType) {
         this.shoeType = shoeType;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

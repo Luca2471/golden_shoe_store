@@ -1,14 +1,12 @@
 package com.goldenshoe.example.goldenshoeservice.controllers;
 
 import com.goldenshoe.example.goldenshoeservice.models.ShoeModel;
-import com.goldenshoe.example.goldenshoeservice.repositories.ShoeModelRepository;
+import com.goldenshoe.example.goldenshoeservice.repositories.shoeModelRepository.ShoeModelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -20,5 +18,10 @@ public class ShoeModelController {
     @GetMapping
     public List<ShoeModel> getAllShoeModels() {
         return shoeModelRepository.findAll();
+    }
+
+    @GetMapping("{id}")
+    public Optional<ShoeModel> getShoeModelsById(@PathVariable Long id) {
+        return shoeModelRepository.findById(id);
     }
 }
