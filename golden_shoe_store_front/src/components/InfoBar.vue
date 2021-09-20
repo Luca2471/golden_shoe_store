@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <ul style="padding: 25px; background-color: #e0e0e0; margin:0">
+  <nav>
+    <ul>
       <li v-for="info in infos" style="display:inline; padding-right: 20px" >
         <a>{{info.name}}</a>
       </li>
     </ul>
-  </div>
+  </nav>
 </template>
 
 <script>
@@ -32,6 +32,13 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+nav {
+  text-align: center;
+  background-color: #e0e0e0; 
+  margin:0; 
+  overflow: hidden;
+}
+
 
 </style>

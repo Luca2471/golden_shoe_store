@@ -1,10 +1,12 @@
 <template>
   <div id="app">
     <nav-bar></nav-bar>
+    
+    <figure class="background-image">
+      <img  src="./assets/shoe-home-page-image.jpeg" alt="close up photo of a white sneaker">
+    </figure>
 
-    <img src="./assets/shoe-home-page-image.jpeg" alt="close up photo of a sneaker" style="width:100%;height:800px; margin:0">
-
-    <info-bar style="margin:0"></info-bar>
+    <info-bar></info-bar>
   </div>
 </template>
 
@@ -26,9 +28,11 @@ export default {
 }
 </script>
 
-<style>
-*{
-  margin: 0
+<style style="scss">
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
+
+body{
+  margin: 0;
 }
 #app {
   margin: 0;
@@ -36,5 +40,14 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  background-color: #e0e0e0;
+}
+
+.background-image {
+  display: block;
+  height: 100%;
+  width:100%;
+  margin:0; 
+  overflow: hidden;
 }
 </style>
