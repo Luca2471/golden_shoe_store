@@ -2,10 +2,10 @@
   <div id="app">
     <nav-bar></nav-bar>
     
-    <figure class="background-image">
+    <figure class="background-image" v-if="displayHomePage">
       <img  src="./assets/shoe-home-page-image.jpeg" alt="close up photo of a white sneaker">
     </figure>
-
+    <shopping-basket v-if="displayShoppingCart"></shopping-basket>
     <info-bar></info-bar>
   </div>
 </template>
@@ -13,17 +13,20 @@
 <script>
 import NavBar from "./components/NavBar.vue";
 import InfoBar from "./components/InfoBar.vue";
+import ShoppingBasket from "./components/ShoppingBasket.vue";
 
 export default {
   name: 'App',
   data() {
     return {
-      shoppingCart: [],
+      displayHomePage: false,
+      displayShoppingCart: true,
     }
   },
   components: {
     "nav-bar": NavBar,
     "info-bar": InfoBar,
+    "shopping-basket": ShoppingBasket,
   }
 }
 </script>

@@ -2,7 +2,7 @@
   <nav>
     <ul>
       <li v-for="info in infos" style="display:inline; padding-right: 20px" >
-        <a>{{info.name}}</a>
+        <a style="cursor: pointer;">{{info.name}}</a>
       </li>
     </ul>
   </nav>

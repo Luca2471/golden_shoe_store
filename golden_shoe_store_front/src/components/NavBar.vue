@@ -2,17 +2,27 @@
   <div>
     <nav style="text-align:right;">
       <a>Help</a> | <a >Hello, {{user.name}}</a>
-      <i class="fa fa-shopping-basket" style="font-size:24px; padding:2% 2% 0 1%; cursor: pointer;"></i>
+      <i class="fa fa-shopping-basket" @click="goToShoppingBasket()" style="font-size:24px; padding:2% 2% 0 1%; cursor: pointer;"></i>
     </nav>
 
      <figure @click="toggleNav()">
-          <i class="fa fa-bars" ></i>
-        </figure>
+        <i class="fa fa-bars" ></i>
+      </figure>
 
     <nav>
       <ul ref="nav">
-        <li style="text-align:center;" v-for="(category, index) in categories" :key="index" @click="onClickShowCategory(category)">
+        <li style="text-align:center; cursor: pointer;" v-for="(category, index) in categories" :key="index" @click="displayShoeStyles(category)">
           <a >{{ category.name }}</a>
+          <i class="fa fa-angle-right"></i>
+        </li>
+      </ul>
+    </nav>
+
+    <nav>
+      <ul ref="styles" class="styles-list">
+        <i @click="toggleNav()" style="text-align:left; padding-left:8%; padding-bottom:4%" class="fa fa-angle-left"></i>
+        <li v-for="(style, index) in shoeStyles" :key="index" @click="goToSelectedPage(style)">
+          <a>{{ style.category }}</a><i class="fa fa-angle-right"></i>
         </li>
       </ul>
     </nav>
@@ -20,55 +30,96 @@
 </template>
 
 <script>
-  export default {
-    name: 'nav-bar',
-    data() {
-      return {
-        categories: [
-          {
-            name: "Men", 
-            id: 1
-          }, 
-          {
-            name: "Women", 
-            id: 2
-          }, 
-          {
-            name: "Kids", 
-            id: 3
-          }, 
-          {
-            name: "Styles", 
-            id: 4
-          }, 
-          {
-            name: "Offers", 
-            id: 5
-          }
-        ],
-        user: {
-          name: "Luca", 
-          url: "help"
+import GoldenShoeService from "../services/GoldenShoeService.js";
+
+export default {
+  name: 'nav-bar',
+  data() {
+    return {
+      shoeStyles: [],
+      categories: [
+        {
+          name: "Home",
+          id: 1
         },
+        {
+          name: "Men", 
+          id: 2
+        }, 
+        {
+          name: "Women", 
+          id: 3
+        }, 
+        {
+          name: "Kids", 
+          id: 4
+        }, 
+        {
+          name: "Styles", 
+          id: 5
+        }, 
+        {
+          name: "Offers", 
+          id: 6
+        }
+      ],
+      user: {
+        name: "Luca", 
+        url: "help"
+      },
+    }
+  },
+
+  methods: {
+    onClickShowCategory(category) {
+      console.log('category: ', category.name)
+    },
+
+    goToShoppingBasket() {
+      console.log("Hello World")
+    },
+
+    goToSelectedPage(selectedStyle) {
+      console.log(selectedStyle.shoeModels)
+    },
+
+    displayShoeStyles(category) {
+      console.log(category.id)
+      if (!(category.id === 1 || category.id === 6)) {
+        const styles = this.$refs.styles.classList;
+        styles.contains('display') ? styles.remove('display') : styles.add('display');
+
+        const nav = this.$refs.nav.classList;
+        nav.remove('active');
       }
     },
 
-    methods: {
-      onClickShowCategory(category) {
-        console.log('category: ', category.name)
-      },
+    toggleNav() {
+      const nav = this.$refs.nav.classList;
+      nav.contains('active') ? nav.remove('active') : nav.add('active');
 
-      toggleNav() {
-        const nav = this.$refs.nav.classList;
-        console.log('active');
-        nav.contains('active') ? nav.remove('active') : nav.add('active');
-      }
-    }
-  }
+      const styles = this.$refs.styles.classList;
+      styles.remove('display')
+    },
+
+     fetchShoeStyles() {
+      GoldenShoeService.getStyles()
+      .then(res => this.shoeStyles = res);
+    },
+  },
+  mounted() {
+    this.fetchShoeStyles();
+  },
+}
 </script>
 
 <style lang="scss" scoped> 
 figure {
+  visibility: hidden;
+}
+
+.styles-list {
+  list-style-type:none;
   visibility: hidden;
 }
 
@@ -109,6 +160,10 @@ nav {
       list-style-type:none;
       display: flex;
       padding: 10px 20px;
+
+      i {
+        visibility: hidden;
+      }
     }
   }
 }
@@ -137,6 +192,24 @@ figure {
 
 @media screen and (max-width: 759px) {
 
+.styles-list {
+  justify-content: start;
+  background-color: #e0e0e0;
+  opacity: 0.93;
+  position: absolute;
+  width: 80%;
+  length: 100%;
+  flex-direction: column;
+  left: -100%;
+  top: 80px;
+  transition: 300ms ease all;
+  margin-left: 0%;
+  &.display {
+    visibility: visible;
+    left: 0px;
+  }
+}
+
 figure {
   visibility: visible;
   position: absolute;
@@ -152,13 +225,13 @@ figure {
       height: 40px;
     ul {
       justify-content: start;
-      background-color: #2c3e50;
+      background-color: #e0e0e0;
       opacity: 0.93;
       position: absolute;
-      width: 140px;
+      width: 80%;
       length: 100%;
       flex-direction: column;
-      left: -300px;
+      left: -100%;
       top: 80px;
       transition: 300ms ease all;
       margin-left: 0%;
@@ -170,6 +243,10 @@ figure {
         width: 100%;
         padding-left: 0;
         padding-right: 0;
+
+        i {
+          visibility: visible;
+        }
       }
 
       a {
