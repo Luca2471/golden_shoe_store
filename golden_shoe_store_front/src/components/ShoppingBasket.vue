@@ -4,37 +4,43 @@
 
     </div>
     <h1>Welcome to the shopping cart!</h1>
-     <h4 v-for="item in shoppingCart">${{item.price}}</h4>
-
+     <h4 v-for="item in shoppingBasket">${{item.price}}</h4>
+      <button @click="clearBasket()">Clear basket</button>
      <a>Total: £{{ getTotal }}</a>
   </div>
 </template>
 
 <script>
+import { eventBus } from "../main.js";
+
 export default {
   name: "shopping-basket",
   data() {
     return {
-      shoppingCart: [],
-      subTotal: null,
+      shoppingBasket: [],
+      subTotal: 0,
     }
   },
   computed: {
     getTotal: function() {
       let total
       let values
-      if (this.shoppingCart.length === 0) {
-        total = 0;
-      } else { 
-        total = this.shoppingCart.reduce(function (accumulator, item) {
-          return accumulator + parseFloat(item.price);
-        }, 0);
-      }
+      total = this.shoppingBasket.reduce(function (accumulator, item) {
+        return accumulator + parseFloat(item.price);
+      }, 0);
       return total.toFixed(2);
     },
   },
   methods: {
+
+    clearBasket() {
+      this.shoppingBasket = [];
+    }
   },
+
+  mounted() {
+    eventBus.$on('add-shoe-to-basket', shoe => this.shoppingBasket.push(shoe))
+  }
 }
 
 </script>

@@ -2,7 +2,9 @@
   <div>
     <nav style="text-align:right;">
       <a>Help</a> | <a >Hello, {{user.name}}</a>
-      <i class="fa fa-shopping-basket" @click="goToShoppingBasket()" style="font-size:24px; padding:2% 2% 0 1%; cursor: pointer;"></i>
+      <router-link to="/shopping-basket">
+        <i class="fa fa-shopping-basket" @click="goToShoppingBasket()" style="font-size:24px; padding:2% 2% 0 1%; cursor: pointer;"></i>
+      </router-link>
     </nav>
 
      <figure @click="toggleNav()">
@@ -22,7 +24,10 @@
       <ul ref="styles" class="styles-list">
         <i @click="toggleNav()" style="text-align:left; padding-left:8%; padding-bottom:4%" class="fa fa-angle-left"></i>
         <li v-for="(style, index) in shoeStyles" :key="index" @click="goToSelectedPage(style)">
-          <a>{{ style.category }}</a><i class="fa fa-angle-right"></i>
+          <router-link class="router-link" to="/shoes">
+            <a >{{ style.category }}</a><i class="fa fa-angle-right"></i>
+          </router-link>
+
         </li>
       </ul>
     </nav>
@@ -31,6 +36,7 @@
 
 <script>
 import GoldenShoeService from "../services/GoldenShoeService.js";
+import { eventBus } from "../main.js";
 
 export default {
   name: 'nav-bar',
@@ -76,15 +82,14 @@ export default {
     },
 
     goToShoppingBasket() {
-      console.log("Hello World")
     },
 
     goToSelectedPage(selectedStyle) {
-      console.log(selectedStyle.shoeModels)
+      eventBus.$emit('selected-style', selectedStyle)
     },
 
     displayShoeStyles(category) {
-      console.log(category.id)
+      eventBus.$emit('selected-category', category)
       if (!(category.id === 1 || category.id === 6)) {
         const styles = this.$refs.styles.classList;
         styles.contains('display') ? styles.remove('display') : styles.add('display');
@@ -244,16 +249,18 @@ figure {
         padding-left: 0;
         padding-right: 0;
 
-        i {
-          visibility: visible;
+        .router-link {
+          i {
+            visibility: visible;
+            padding-right: 3%;
+          }
+          a {
+            flex-direction: row;
+            margin-left: 20px;
+            justify-content: space-between;
+            margin-right: 13px;
+          }
         }
-      }
-
-      a {
-        flex-direction: row;
-        margin-left: 20px;
-        justify-content: space-between;
-        margin-right: 13px;
       }
     }
   }
