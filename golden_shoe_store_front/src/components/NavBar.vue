@@ -3,7 +3,7 @@
     <nav style="text-align:right;">
       <a>Help</a> | <a >Hello, {{user.name}}</a>
       <router-link to="/shopping-basket">
-        <i class="fa fa-shopping-basket" @click="goToShoppingBasket()" style="font-size:24px; padding:2% 2% 0 1%; cursor: pointer;"></i>
+        <i class="fa fa-shopping-basket" @click="goToShoppingBasket()" style="color:#2c3e50;font-size:24px; padding:2% 2% 0 1%; cursor: pointer;"></i>
       </router-link>
     </nav>
 
@@ -45,7 +45,7 @@ export default {
       shoeStyles: [],
       categories: [
         {
-          name: "Home",
+          name: "Homes",
           id: 1
         },
         {

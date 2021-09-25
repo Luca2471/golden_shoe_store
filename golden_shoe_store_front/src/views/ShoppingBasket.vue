@@ -1,6 +1,7 @@
 <template>
-  <div class="shopping-basket">
-    <shopping-basket></shopping-basket>
+  <div>
+  <h1>This is the shopping basket</h1>
+    <ShoppingBasket></ShoppingBasket>
   </div>
 </template>
 
@@ -15,7 +16,7 @@ export default {
     }
   },
   components: {
-    "shopping-basket": ShoppingBasket
+    ShoppingBasket
   }
 }
 

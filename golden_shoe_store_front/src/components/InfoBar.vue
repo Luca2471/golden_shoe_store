@@ -1,7 +1,7 @@
 <template>
   <nav>
     <ul>
-      <li v-for="info in infos" style="display:inline; padding-right: 20px" >
+      <li v-for="(info, index) in infos" :key="index" style="display:inline; padding-right: 20px" >
         <a style="cursor: pointer;">{{info.name}}</a>
       </li>
     </ul>
