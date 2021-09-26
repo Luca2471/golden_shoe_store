@@ -29,6 +29,8 @@ public class ShoeModel {
     @Column(name = "shoeURL")
     private String shoeURL;
 
+    @Column(name = "shoeURLSmall")
+    private String shoeURLSmall;
 
     @JsonIgnoreProperties("shoeModel")
     @ManyToOne
@@ -38,12 +40,13 @@ public class ShoeModel {
     @Column(name = "gender")
     private String gender;
 
-    public ShoeModel(String model, String color, String price, int quantity, String shoeURL, ShoeType shoeType, String gender) {
+    public ShoeModel(String model, String color, String price, int quantity, String shoeURL, String shoeURLSmall, ShoeType shoeType, String gender) {
         this.model = model;
         this.color = color;
         this.price = price;
         this.quantity = quantity;
         this.shoeURL = shoeURL;
+        this.shoeURLSmall = shoeURLSmall;
         this.shoeType = shoeType;
         this.gender = gender;
     }
@@ -101,6 +104,14 @@ public class ShoeModel {
 
     public ShoeType getShoeType() {
         return shoeType;
+    }
+
+    public String getShoeURLSmall() {
+        return shoeURLSmall;
+    }
+
+    public void setShoeURLSmall(String shoeURLSmall) {
+        this.shoeURLSmall = shoeURLSmall;
     }
 
     public void setShoeType(ShoeType shoeType) {
