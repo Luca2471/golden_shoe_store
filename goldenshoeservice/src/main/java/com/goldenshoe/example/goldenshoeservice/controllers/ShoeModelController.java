@@ -24,4 +24,14 @@ public class ShoeModelController {
     public Optional<ShoeModel> getShoeModelsById(@PathVariable Long id) {
         return shoeModelRepository.findById(id);
     }
+
+    @GetMapping("gender/{gender}")
+    public List<ShoeModel> getAllShoesByGender(@PathVariable String gender) {
+        return shoeModelRepository.findAllShoesByGender(gender);
+    }
+
+    @GetMapping("category/{gender}/{category}")
+    public List<ShoeModel> getAllShoesByGenderAndCategory(@PathVariable String gender, @PathVariable String category) {
+        return shoeModelRepository.findAllShoesByGenderAndCategory(gender, category);
+    }
 }

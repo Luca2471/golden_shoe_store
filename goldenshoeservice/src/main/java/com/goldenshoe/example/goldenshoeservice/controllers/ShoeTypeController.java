@@ -24,4 +24,10 @@ public class ShoeTypeController {
     public Optional<ShoeType> getShoeTypeById(@PathVariable Long id) {
         return shoeTypeRepository.findById(id);
     }
+
+    @GetMapping("category/{category}")
+    public List<ShoeType> getAllShoesByCategory(@PathVariable String category) {
+        return shoeTypeRepository.findAllShoesByCategory(category);
+    }
+
 }
