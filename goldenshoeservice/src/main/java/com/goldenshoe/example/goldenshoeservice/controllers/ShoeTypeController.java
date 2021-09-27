@@ -4,6 +4,7 @@ import com.goldenshoe.example.goldenshoeservice.models.ShoeType;
 import com.goldenshoe.example.goldenshoeservice.repositories.shoeTypeRepository.ShoeTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 import java.util.Optional;

@@ -10,4 +10,5 @@ import java.util.List;
 @RepositoryRestResource(excerptProjection = EmbedShoeModel.class)
 public interface ShoeTypeRepository extends JpaRepository<ShoeType, Long> {
     List<ShoeType> findAllShoesByCategory(String category);
+
 }
