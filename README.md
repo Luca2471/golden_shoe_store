@@ -16,5 +16,5 @@ Build using HTML5, SCSS, JS, VUE3, Postgres, Java, Spring
 For instructions on how to run the client side, please read the README.md in
 golden-shoe-store-front-end
 
-For instructions on how to run the server side, please read the HELP.md in
+For instructions on how to run the server side, please read the README.md in
 goldenshoeservice
