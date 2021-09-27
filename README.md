@@ -6,7 +6,6 @@ Build using HTML5, SCSS, JS, VUE3, Postgres, Java, Spring
 
 <img src="https://i.imgur.com/VrxPdeF.png" width="20%" height="100%" align="left">
 <img src="https://i.imgur.com/NNadYnb.png" width="20%" height="100%" align="left">
-<img src="https://i.imgur.com/xmFnxmJ.png" width="20%" height="100%" align="left">
 <img src="https://i.imgur.com/MMXkGqK.png" width="20%" height="100%" align="left">
 
 
