@@ -4,10 +4,10 @@ Build using HTML5, SCSS, JS, VUE3, Postgres, Java, Spring
 
 ## Overview
 
-<img src="https://i.imgur.com/VrxPdeF.png" width="20%" height="100%" align="left">
-<img src="https://i.imgur.com/NNadYnb.png" width="20%" height="100%" align="left">
-<img src="https://i.imgur.com/MMXkGqK.png" width="20%" height="100%" align="left">
-<img src="https://i.imgur.com/rBlSV60.png" width="20%" height="100%" align="left">
+<img src="https://i.imgur.com/VrxPdeF.png" width="25%" height="100%" align="left">
+<img src="https://i.imgur.com/NNadYnb.png" width="25%" height="100%" align="left">
+<img src="https://i.imgur.com/MMXkGqK.png" width="25%" height="100%" align="left">
+<img src="https://i.imgur.com/rBlSV60.png" width="25%" height="100%" align="left">
 
 
 
