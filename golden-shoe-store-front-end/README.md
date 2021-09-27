@@ -1,5 +1,7 @@
 # store-front
 
+Requirements: Please ensure you have vue and the vue cli installed on your machine.
+
 ## Project setup
 ```
 npm install
