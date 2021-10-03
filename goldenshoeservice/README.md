@@ -1,10 +1,11 @@
 # Getting Started
 Install Java sdk 1.8
 
-please ensure that you have postgres installed on your machine.
+please ensure that you have postgres installed on your machine.  
 To create the data base run:
+```
 createdb goldenshoeservice -U postgres
-
+```
 ### Reference Documentation
 For further reference, please consider the following sections:
 
