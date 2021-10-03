@@ -13,6 +13,7 @@
       </figure>
       
       <ul ref="nav">
+        
         <li style="text-align:center; cursor: pointer;" v-for="category in categories" :key="category.id" @click="displayShoeStyles(category)">
           <div class="dropdown">
           <a class="mobile">{{ category.name }}</a>
@@ -32,6 +33,11 @@
               </router-link>
             </a>
         </div>
+        <div class="search-bar-wrapper">
+          <i class="fa fa-search" style="position:absolute;top:0px; left:3px; width:14px; font-sieze:3px;"></i>
+          <input v-model.trim="searchBar" class="search-bar" type="search" placeholder="search">
+        </div>
+        
       </ul>
     </nav>
 
@@ -55,6 +61,7 @@ export default {
   name: 'nav-bar',
   data() {
     return {
+      searchBar:"",
       shoeStyles: [],
       selectedCategory: null,
       selectedUrl: "",
@@ -144,8 +151,26 @@ export default {
 </script>
 
 <style lang="scss" scoped> 
+
+.search-bar-wrapper {
+  position: relative;
+  display: flex;
+  min-width: 100px;
+}
+
 .drop-down {
   display: none
+}
+
+.search-bar {
+  border: 1px solid grey;
+  border-radius: 10px;
+  height: 35px;
+  font-size: 15px;
+  width: 100%;
+  padding: 2px 23px 2px 35px;
+  outline: 0;
+  background-color: #f5f5f5;
 }
 
 .dropdown {
@@ -387,154 +412,5 @@ figure {
     }
   }
 }
-
-// .top-section-nav {
-//   text-align:right;
-// }
-
-
-// .styles-list {
-//   list-style-type: none;
-//   visibility: hidden;
-// }
-
-// nav {
-//   height: 100vh;
-//   width: 100%;
-//   overflow: hidden;
-//   text-align: center;
-  
-//   i {
-//     visibility: hidden;
-//     font-size: 30px;
-//   }
-
-//   ul {
-//     justify-content: space-between;
-//     display: flex;
-//     height: 100%;
-//     margin-block-start: 0;
-//     margin-block-end: 0;
-//     padding-inline-start: 0;
-//     margin-left: 10%;
-//     margin-right: 10%; 
-
-//     li:hover {    
-//       border-bottom: 5px solid black;
-//     }
-
-//     li {
-//       justify-content: space-between;
-//       list-style-type:none;
-//       display: flex;
-//       padding: 10px 20px;
-
-//       i {
-//         visibility: hidden;
-//       }
-//     }
-//   }
-// }
-
-// .drop-down {
-//   display: none;
-//   position: absolute;
-//   background-color: #2c3e50;
-//   z-index: 1;
-// }
-
-// .drop-down a {
-//   color: black;
-//   padding: 12px 16px;
-//   text-decoration: none;
-//   display: block
-// }
-
-// @media screen and (max-width: 759px) {
-
-// .styles-list {
-//   position: absolute;
-//   background-color: #D9DDDE;
-//   position: absolute;
-//   width: 80%;
-//   height: 100%;
-//   length: 100%;
-//   flex-direction: column;
-//   left: -100%;
-//   top: 80px;
-//   transition: 300ms ease all;
-//   margin-left: 0%;
-//   &.display {
-//     visibility: visible;
-//     left: -10px;
-//   }
-//    li {
-//       width: 100%;
-//       padding-left: 0;
-//       padding-right: 0;
-//     a{
-//     flex-direction: row;
-//             margin-left: 0px;
-//             justify-content: space-between;
-//             margin-right: 13px;
-//     }
-//    }
-// }
-
-// figure {
-//   visibility: visible;
-//   position: absolute;
-//   z-index: 1;
-//   top: 1px;
-//   left: -25px;
- 
-// }
-
-// nav {
-//     i {
-//       visibility: visible;
-//       position: absolute;
-//       z-index: 1;
-//       top: 1px;
-//       left: -25px;
-//       font-size: 40px
-//     }
-//       height: 40px;
-//     ul {
-//       padding-top: 60px;
-//       justify-content: start;
-//       background-color: #D9DDDE;
-//       position: absolute;
-//       width: 80%;
-//       length: 100%;
-//       flex-direction: column;
-//       left: -100%;
-//       top: 80px;
-//       transition: 300ms ease all;
-//       margin-left: 0%;
-//       &.active {
-//         left: 0px;
-//       }
-
-//       li {
-//         width: 100%;
-//         padding-left: 0;
-//         padding-right: 0;
-        
-//         .router-link {
-//           i {
-//             visibility: visible;
-//           }
-//           a {
-//             flex-direction: row;
-//             margin-left: 20px;
-//             justify-content: space-between;
-//             margin-right: 13px;
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
 
 </style>
