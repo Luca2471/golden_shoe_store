@@ -19,9 +19,8 @@
           <a class="mobile">{{ category.name }}</a>
           <router-link :to="category.url" class="desktop">{{ category.name }}</router-link>
             <div class="dropdown-content">
-              <router-link v-for="style in shoeStyles" :key="style.id" @click="goToCategoryPage(style)" class="router-link" :to="this.selectedUrl">
-                {{ style.category }}
-              </router-link>
+              <a  v-for="style in shoeStyles" :key="style.id" @click="goToCategoryPage(style)" class="router-link">
+                {{ style.category }}</a>
             </div>
           </div>
         </li>
@@ -45,9 +44,7 @@
       <ul ref="styles" class="styles-list">
         <i @click="toggleNav()" style="text-align:left; padding-left:8%; padding-bottom:4%" class="fa fa-angle-left"></i>
         <li v-for="style in shoeStyles" :key="style.id" @click="goToCategoryPage(style)">
-          <router-link class="router-link" :to="this.selectedUrl">
-            <a >{{ style.category }}</a>
-          </router-link>
+            <a class="router-link">{{ style.category }}</a>
         </li>
       </ul>
     </nav>
@@ -109,7 +106,6 @@ export default {
       },
     }
   },
-
   methods: {
     goToCategoryPage(style) {
       this.selectedUrl = `/${this.selectedCategory}/${style.category}`
@@ -117,6 +113,7 @@ export default {
       nav.remove('active');
       const styles = this.$refs.styles.classList;
       styles.remove('display')
+      this.$router.push({ path: this.selectedUrl})
     },
 
     displayShoeStyles(category) {
@@ -380,13 +377,17 @@ figure {
       position: absolute;
       width: 80%;
       length: 100%;
-      flex-direction: column;
+      flex-direction: column-reverse;
       left: -100%;
       top: 80px;
       transition: 300ms ease all;
       margin-left: 0%;
       &.active {
         left: 0px;
+      }
+      .search-bar-wrapper {
+        padding-bottom: 20px;
+        background-color: #D9DDDE;
       }
 
       li {
@@ -412,5 +413,6 @@ figure {
     }
   }
 }
+
 
 </style>

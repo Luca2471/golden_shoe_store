@@ -2,10 +2,11 @@
   <div>
     <ShoeDetail :selectedShoe="selectedShoe" :active="active" v-on:close-shoe-detail="closeShoeDetail"/>
 
+
     <div class="shoe-details-box" >
       <ShoesDetails v-for="shoe in shoes" :key="shoe.id" :shoe="shoe" v-on:view-shoe="viewShoe($event)"/> 
+      <h1 class="h1">Click me</h1>
     </div>
-
   </div>
 </template>
 

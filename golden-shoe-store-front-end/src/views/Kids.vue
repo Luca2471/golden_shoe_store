@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div >
     <ShoeDetail :selectedShoe="selectedShoe" :active="active" v-on:close-shoe-detail="closeShoeDetail"/>
-
     <div class="shoe-details-box" >
       <ShoesDetails v-for="shoe in shoes" :key="shoe.id" :shoe="shoe" v-on:view-shoe="viewShoe($event)"/> 
     </div>
 
+    <button @click="getAllShoes"> click me</button>
   </div>
 </template>
 
@@ -27,8 +27,8 @@ export default {
       active: false,
       category: {
         gender: null,
-        category: null,
-      }
+        style: null,
+      },
     }
   },
 
@@ -53,6 +53,7 @@ export default {
       this.active = false;
     }
   },
+
   mounted() {
     this.getAllShoes();
   },
