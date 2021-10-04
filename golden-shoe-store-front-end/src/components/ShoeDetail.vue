@@ -1,8 +1,6 @@
 <template>
   <div class="card-background" :class="{show: active}" @click="$emit('close-shoe-detail')" />
 
- 
-
   <div class="card" :class="{show: active}">
     <div class="close-card" @click="$emit('close-shoe-detail')">
       X
@@ -12,37 +10,30 @@
       <h3 class="text-center">{{ selectedShoe.model }}</h3>
       <img :src="selectedShoe.shoeURL" class="regular-image">
       <img :src="selectedShoe.shoeURLSmall" class="small-image">
-      <p class="description"></p>
       <p class="description">In stock: {{ selectedShoe.quantity }}</p>
+      <p class="description">This item is out of stock!</p>
       <h3 class="text-center">£{{ selectedShoe.price }}</h3>
-    
-      <div class="button-container">
+      <div class="button-container" v-if="selectedShoe.quantity !== 0" >
         <button class="add" @click="addToBasket()">Add to basket</button>
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
 export default {
+  name: 'shoe-detail',
   props: ['selectedShoe', 'active'],
-  components: {
-  },
+
   methods: {
     addToBasket() {
       this.$store.commit('addToBasket', this.selectedShoe);
     },
-
   },
 }
 </script>
 
 <style lang="scss" scoped >
-
-.modal-card {
-  z-index: 1;
-}
 
 .card-background {
   width: 100%;
@@ -50,7 +41,6 @@ export default {
   position: fixed;
   left: 0;
   top: 0;
-  backgorund-color: rgba(124, 124, 124, 0.55);
   z-index: 2;
   display: none;
   trasition: display .5s;
@@ -105,8 +95,7 @@ export default {
   flex-direction: column;
 
   p.description {
-    padding: 20px;
-    line-height: 1.5rem;
+    padding: 3px;
   }
 
   .button-container{ 

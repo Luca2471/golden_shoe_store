@@ -20,6 +20,7 @@ import BasketCheckout from '../components/BasketCheckout.vue'
 import ShoeDetail from '../components/ShoeDetail.vue';
 
 export default {
+  name: 'basket',
   data() {
     return {
       selectedShoe: null,
@@ -37,24 +38,27 @@ export default {
       this.selectedShoe = shoe;
       this.active = true;
     },
+
     closeShoeDetail() {
       this.active = false;
     },
+
     clearBasket() {
       this.$store.commit('clearBasket');
       return this.$store.getters.basketItems;
     },
+
     removeShoeFromBasket(shoe) {
       this.$store.commit('removeFromBasket', shoe);
-      console.log(shoe)
       return this.$store.getters.basketItems;
-    }
+    },
   },
+
   computed: {
     shoes() {
-      return this.$store.getters.basketItems
-    }
-  }
+      return this.$store.getters.basketItems;
+    },
+  },
 }
 </script>
 
@@ -95,12 +99,12 @@ export default {
 }
 
 @media screen and (max-width: 759px) {
-.shoe-basket {
-  margin: 15px;
-  width: 360px;
-  height: 204.5px;
-}
 
+  .shoe-basket {
+    margin: 15px;
+    width: 360px;
+    height: 204.5px;
+  }
 }
 
 </style>

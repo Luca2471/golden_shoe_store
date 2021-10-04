@@ -37,7 +37,7 @@ export default {
   },
 
   getShoesByStyle(category) {
-    return fetch(`${baseURL}/category/${category}`)
+    return fetch(`${baseURL}/shoeTypes/category/${category}`)
     .then(res => res.json());
   },
 }

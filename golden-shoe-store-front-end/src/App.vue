@@ -1,6 +1,6 @@
 <template lang="html">
-  <NavBar id="nav"/>
-  <router-view/>
+  <NavBar id="nav" />
+  <router-view />
   <InfoBar />
 </template>
 
@@ -9,17 +9,20 @@ import NavBar from "./components/NavBar.vue";
 import InfoBar from "./components/InfoBar.vue";
 
 export default {
+  name: 'app',
   components: {
     NavBar,
     InfoBar,
   },
+
   mounted() {
-    this.$store.commit('updateBasketFromLocalStorage')
+    this.$store.commit('updateBasketFromLocalStorage');
   }
 }
 </script>
 
 <style lang="scss"> 
+
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
 i {
@@ -67,6 +70,4 @@ body {
   text-align: center;
 }
 
-@media screen and (max-width: 760px) {
-}
 </style>

@@ -5,7 +5,6 @@
     <div class="shoe-details-box" >
       <ShoesDetails v-for="shoe in shoes" :key="shoe.id" :shoe="shoe" v-on:view-shoe="viewShoe($event)"/> 
     </div>
-
   </div>
 </template>
 
@@ -15,11 +14,12 @@ import ShoesDetails from '../components/ShoesDetails.vue';
 import ShoeDetail from '../components/ShoeDetail.vue';
 
 export default {
-  name: 'ShoesList',
+  name: 'shoes-list',
   components: {
     ShoesDetails,
     ShoeDetail,
   },
+
   data() {
     return {
       shoes: [],
@@ -33,17 +33,20 @@ export default {
       GoldenShoeService.getModels()
       .then(res => this.shoes = res);
     },
+
     viewShoe(shoe) {
       this.selectedShoe = shoe;
       this.active = true;
     },
+
     closeShoeDetail() {
       this.active = false;
-    }
+    },
   },
+
   mounted() {
     this.getAllShoes();
-  },
+  }
 }
 </script>
 
@@ -55,4 +58,5 @@ export default {
   justify-content: center;
   background-color: #D9DDDE;
 }
+
 </style>

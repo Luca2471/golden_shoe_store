@@ -4,6 +4,7 @@
       <img :src="shoe.shoeURL" class="regular-image" >
       <img :src="shoe.shoeURLSmall" class="small-image" >
     </div>
+
     <div class="header">
       <h3>{{ shoe.model }}</h3>
       <h4>Price: £{{ shoe.price }}</h4>
@@ -15,7 +16,9 @@
 
 <script>
 export default {
+  name: 'basket-item',
   props: ['shoe'],
+
   computed: {
     totalCostOfSameShoes() {
       return this.shoe.price * this.shoe.amount;
@@ -25,6 +28,7 @@ export default {
 </script>
 
 <style lang="scss" >
+
 .basket-shoe-card {
   height: 330px;
   width: 400px;
@@ -32,19 +36,22 @@ export default {
 }
 
 img.small-image {
+  display: none;
+}
+
+@media screen and (max-width: 759px) {
+
+  img.regular-image {
     display: none;
   }
-@media screen and (max-width: 759px) {
-  img.regular-image {
-     display: none;
-  }
+
   img.small-image {
     display: block;
   }
 
   .basket-shoe-card {
-  height: 204;
-  width: 300px;
-}
+    height: 204;
+    width: 300px;
+  }
 }
 </style>

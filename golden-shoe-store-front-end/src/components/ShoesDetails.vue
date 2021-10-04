@@ -1,7 +1,7 @@
 <template>
   <div class="shoe-card" @click="$emit('view-shoe', shoe)">
-  <img :src="shoe.shoeURL" class="regular-image">
-  <img :src="shoe.shoeURLSmall" class="small-image">
+    <img :src="shoe.shoeURL" class="regular-image">
+    <img :src="shoe.shoeURLSmall" class="small-image">
     <h3>{{ shoe.model }}</h3>
     <h5 class="gender">{{ shoe.gender}}'s {{ shoe.shoeType.category }} Shoes</h5>
     <h4 class="price">£{{ shoe.price }} 
@@ -13,11 +13,13 @@
 
 <script>
 export default {
+  name: 'shoes-details',
   props: ['shoe'],
 }
 </script>
 
 <style lang="scss">
+
 .shoe-card {
   cursor: pointer;
   text-align: left;
@@ -30,6 +32,7 @@ export default {
   img.regular-image {
     display: block;
   }
+
   img.small-image {
     display: none;
   }
@@ -45,17 +48,20 @@ export default {
 }
 
 @media screen and (max-width: 760px) {
+  
   .shoe-card {
     margin: 30px 0.5px 3px;
     width: 204px;
     margin: 0.5px;
     height: 100%;
+
     img.regular-image {
      display: none;
     }
+
     img.small-image {
     display: block;
-  }
+    }
   }
 }
 </style>

@@ -8,6 +8,7 @@ export default createStore({
   state: {
     basket: [],
   },
+
   getters: {
     itemQuantity: state => shoe => {
       const item = state.basket.find(i => i.id === shoe.id);
@@ -17,13 +18,16 @@ export default createStore({
         return null;
       }
     },
+    
     basketItems: state => {
       return state.basket;
     },
+
     totalInBasket: state => {
       return state.basket.reduce((a, b) => a + (b.price * b.amount), 0);
     }
   },
+
   mutations: {
     addToBasket(state, shoe) {
       let item = state.basket.find(i => i.id === shoe.id);
@@ -65,8 +69,10 @@ export default createStore({
       }
     }
   },
+
   actions: {
   },
+
   modules: {
   }
 })

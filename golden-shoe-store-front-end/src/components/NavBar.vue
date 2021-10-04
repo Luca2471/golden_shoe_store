@@ -2,6 +2,7 @@
   <div>
     <nav style="text-align:right;">
       <router-link to="/">Hello, {{user.name}}</router-link >
+
       <router-link to="/Basket">
         <i class="fa fa-shopping-basket" style="color:#2c3e50;font-size:24px; padding:2% 2% 0 1%; cursor: pointer;"></i>
       </router-link>
@@ -13,7 +14,6 @@
       </figure>
       
       <ul ref="nav">
-        
         <li style="text-align:center; cursor: pointer;" v-for="category in categories" :key="category.id" @click="displayShoeStyles(category)">
           <div class="dropdown">
           <a class="mobile">{{ category.name }}</a>
@@ -32,11 +32,11 @@
               </router-link>
             </a>
         </div>
+
         <div class="search-bar-wrapper">
           <i class="fa fa-search" style="position:absolute;top:0px; left:3px; width:14px; font-sieze:3px;"></i>
           <input v-model.trim="searchBar" class="search-bar" type="search" placeholder="search">
         </div>
-        
       </ul>
     </nav>
 
@@ -44,7 +44,7 @@
       <ul ref="styles" class="styles-list">
         <i @click="toggleNav()" style="text-align:left; padding-left:8%; padding-bottom:4%" class="fa fa-angle-left"></i>
         <li v-for="style in shoeStyles" :key="style.id" @click="goToCategoryPage(style)">
-            <a class="router-link">{{ style.category }}</a>
+          <a class="router-link">{{ style.category }}</a>
         </li>
       </ul>
     </nav>
@@ -108,32 +108,31 @@ export default {
   },
   methods: {
     goToCategoryPage(style) {
-      this.selectedUrl = `/${this.selectedCategory}/${style.category}`
+      this.selectedUrl = `/${this.selectedCategory}/${style.category}`;
       const nav = this.$refs.nav.classList;
       nav.remove('active');
       const styles = this.$refs.styles.classList;
-      styles.remove('display')
-      this.$router.push({ path: this.selectedUrl})
+      styles.remove('display');
+      this.$router.push({ path: this.selectedUrl});
     },
 
     displayShoeStyles(category) {
-      this.selectedCategory = category.name
-
-      if (!(category.id === 1 || category.id === 6)) {
+      this.selectedCategory = category.name;
+      if (category.id !== 1) {
         const styles = this.$refs.styles.classList;
         styles.contains('display') ? styles.remove('display') : styles.add('display');
-
         const nav = this.$refs.nav.classList;
         nav.remove('active');
+      } else {
+        this.$router.push({ path: '/Shoes'})
       }
     },
 
     toggleNav() {
       const nav = this.$refs.nav.classList;
       nav.contains('active') ? nav.remove('active') : nav.add('active');
-      
       const styles = this.$refs.styles.classList;
-      styles.remove('display')
+      styles.remove('display');
     },
 
      fetchShoeStyles() {
@@ -141,9 +140,10 @@ export default {
       .then(res => this.shoeStyles = res);
     },
   },
+
   mounted() {
     this.fetchShoeStyles();
-  },
+  }
 }
 </script>
 
@@ -191,22 +191,27 @@ export default {
   display: block;
 }
 
-.dropdown-content a:hover {background-color: #D9DDDE;}
-
-.dropdown:hover .dropdown-content {display: block;}
-
-.dropdown:hover .dropbtn {background-color: #D9DDDE;}
-
-.mobile {
-    visibility: hidden;
-    display: none;
+.dropdown-content a:hover {
+  background-color: #D9DDDE;
 }
 
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #D9DDDE;
+}
+
+.mobile {
+  visibility: hidden;
+  display: none;
+}
 
 figure {
   visibility: hidden;
-
 }
+
 .desktop {
   visibility: visible;
   text-align: center;
@@ -281,10 +286,8 @@ a {
 }
 
 figure {
-    cursor: pointer;
+  cursor: pointer;
 }
-
-
 
 .drop-down {
   display: none;
@@ -302,75 +305,67 @@ figure {
 
 @media screen and (max-width: 759px) {
 
-.desktop {
+  .desktop {
     visibility: hidden;
-}
+  }
 
-.drop-down {
-  display: none
-}
+  .drop-down {
+    display: none
+  }
 
-.dropdown {
-}
+  .dropdown-content a:hover {
+    display: none;
+  } 
 
-.dropdown-content {
-}
+  .dropdown:hover .dropdown-content {
+    display: none;
+    }
 
-.dropdown-content a {
+  .dropdown:hover .dropbtn {
+    display: none
+  }
 
-}
-
-.dropdown-content a:hover {
-  display: none;
-}
-
-.dropdown:hover .dropdown-content {
-  display: none;
-}
-
-.dropdown:hover .dropbtn {
-  display: none
-}
-
-.styles-list {
-  justify-content: start;
-  position: absolute;
-  width: 80%;
-  length: 100%;
-  flex-direction: column;
-  left: -100%;
-  top: 80px;
-  transition: 300ms ease all;
-  margin-left: 0%;
+  .styles-list {
+    justify-content: start;
+    position: absolute;
+    width: 80%;
+    length: 100%;
+    flex-direction: column;
+    left: -100%;
+    top: 80px;
+    transition: 300ms ease all;
+    margin-left: 0%;
  
-  &.display {
+    &.display {
+      visibility: visible;
+      left: 0px;
+    }
+  }
+
+  figure {
     visibility: visible;
-    left: 0px;
-  }
-}
+    position: absolute;
+    z-index: 1;
+    top: 1px;
+    left: -25px;
 
-figure {
-  visibility: visible;
-  position: absolute;
-  z-index: 1;
-  top: 1px;
-  left: -25px;
-  &.active {
-    visibility: hidden;
-  }
-  i {
-    font-size: 40px
-  }
-  
-}
+    &.active {
+      visibility: hidden;
+    }
 
- .mobile {
-  visibility: visible;
-  display: block;
-}
+    i {
+      font-size: 40px
+    }
+  } 
+
+  .mobile {
+    visibility: visible;
+    display: block;
+  }
 
   nav {
-      height: 40px;
+    height: 40px;
+
     ul {
       justify-content: start;
       background-color: #D9DDDE;
@@ -382,9 +377,11 @@ figure {
       top: 80px;
       transition: 300ms ease all;
       margin-left: 0%;
+
       &.active {
         left: 0px;
       }
+
       .search-bar-wrapper {
         padding-bottom: 20px;
         background-color: #D9DDDE;
@@ -401,18 +398,17 @@ figure {
             visibility: visible;
             padding-right: 3%;
           }
+
           a {
             flex-direction: row;
             margin-left: 20px;
             justify-content: space-between;
             margin-right: 13px;
-           
           }
         }
       }
     }
   }
 }
-
 
 </style>
