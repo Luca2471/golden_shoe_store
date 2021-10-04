@@ -24,7 +24,6 @@
 export default {
   name: 'shoe-detail',
   props: ['selectedShoe', 'active'],
-
   methods: {
     addToBasket() {
       this.$store.commit('addToBasket', this.selectedShoe);

@@ -18,7 +18,6 @@
 export default {
   name: 'basket-item',
   props: ['shoe'],
-
   computed: {
     totalCostOfSameShoes() {
       return this.shoe.price * this.shoe.amount;

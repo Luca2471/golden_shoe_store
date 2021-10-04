@@ -21,16 +21,16 @@ import ShoeDetail from '../components/ShoeDetail.vue';
 
 export default {
   name: 'basket',
+  components: {
+    BasketItem,
+    BasketCheckout,
+    ShoeDetail,
+  },
   data() {
     return {
       selectedShoe: null,
       active: false,
     }
-  },
-  components: {
-    BasketItem,
-    BasketCheckout,
-    ShoeDetail,
   },
 
   methods: {

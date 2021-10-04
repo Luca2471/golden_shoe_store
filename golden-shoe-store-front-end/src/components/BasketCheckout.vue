@@ -10,7 +10,6 @@
 export default {
   name: 'basket-checkout',
   props: ['shoes'],
-
   computed: {
     totalInBasket() {
       return this.$store.getters.totalInBasket;

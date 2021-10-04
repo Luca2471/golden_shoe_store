@@ -106,6 +106,7 @@ export default {
       },
     }
   },
+  
   methods: {
     goToCategoryPage(style) {
       this.selectedUrl = `/${this.selectedCategory}/${style.category}`;
